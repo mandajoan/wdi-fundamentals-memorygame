@@ -1,5 +1,6 @@
  console.log("Up and running!");
 
+
  var cards = [
  {
  	rank: 'queen',
@@ -37,17 +38,20 @@ var checkForMatch = function () {
  	console.log(cards[cardId].suit);
  	checkForMatch();
  	this.setAttribute('src', cards[cardId].cardImage);
- 	if (cardsInPlay.length === 2 && cardsInPlay[0] === cardsInPlay[2]) {
- 	alert("You found a match!");
- 	} else {
- 	alert("Sorry, try again.");
- }
+ 	if (cardsInPlay.length === 2){
+	 	if (cardsInPlay[0] === cardsInPlay[1]) {
+	 	alert("You found a match!");
+	 	} else {
+	 	alert("Sorry, try again.");
+	 }
+	 cardsInPlay = [];
+}
  };
- 
+
  var createBoard = function (){
- 	for (var i = 0; i < cards.length; i+=1) {
+ 	for (var i = 0; i < cards.length; i++) {
  		var cardElement = document.createElement('img');
- 		cardElement.setAttribute('src', 'images/back.png');
+ 		cardElement.setAttribute('src','images/back.png');
  		cardElement.setAttribute('data-id', i);
  		document.getElementById('game-board').appendChild(cardElement);
  		cardElement.addEventListener('click', flipCard, false);
@@ -55,9 +59,3 @@ var checkForMatch = function () {
 };
 
 createBoard();
-
- 
-	
-
-
- 
